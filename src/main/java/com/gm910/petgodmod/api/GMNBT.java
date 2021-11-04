@@ -186,6 +186,14 @@ public class GMNBT {
 		return lws;
 	}
 
+	public static <T, K> ListTag makeMap(Map<T, K> map, Function<Pair<T, K>, Tag> func) {
+		ListTag list = new ListTag();
+		for (T key : map.keySet()) {
+			list.add(func.apply(Pair.of(key, map.get(key))));
+		}
+		return list;
+	}
+
 	public static CompoundTag writeVec3d(Vector3d vec) {
 		CompoundTag nbt = new CompoundTag();
 		nbt.putDouble("X", vec.x);

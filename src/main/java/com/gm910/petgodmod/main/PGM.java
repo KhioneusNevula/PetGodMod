@@ -5,10 +5,15 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.gm910.petgodmod.init.BlockInit;
+import com.gm910.petgodmod.init.ItemInit;
+import com.gm910.petgodmod.init.TileInit;
+
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -32,6 +37,10 @@ public class PGM {
 		// Register the processIMC method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		BlockInit.BLOCKS.register(bus);
+		ItemInit.ITEMS.register(bus);
+		TileInit.TILES.register(bus);
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
 	}

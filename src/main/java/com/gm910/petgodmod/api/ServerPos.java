@@ -87,7 +87,7 @@ public class ServerPos extends BlockPos {
 
 	}
 
-	public ServerPos(Vec3 source, Level d) {
+	public ServerPos(Vec3i source, Level d) {
 		this(source, d.dimension());
 	}
 
